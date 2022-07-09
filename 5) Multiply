@@ -1,0 +1,35 @@
+section .data
+
+abc db 'Multiplication of two numbers is '
+abclen: equ $-abc
+
+section .bss
+mult resb 2
+
+section .text
+global _start
+
+_start:
+
+mov eax,1 
+mov ebx,2
+
+mul ebx  
+add eax,'0'  
+mov [mult],eax
+
+
+mov eax,4
+mov ebx,1
+mov ecx,abc
+mov edx,abclen
+int 80h
+
+mov eax,4
+mov ebx,1
+mov ecx,mult
+mov edx,2
+int 80h
+
+mov eax,1
+int 80h
