@@ -1,0 +1,38 @@
+section .text
+     global _start
+_start:
+
+;printing Msg
+mov eax,4
+mov ebx,1
+mov ecx,Msg
+mov edx,Msg_len
+int 80h
+
+;taking inpu
+
+mov eax,3
+mov ebx,0
+mov ecx,inpu
+mov edx,20
+int 80h
+
+;printing input
+
+mov eax,4
+mov ebx,1
+mov ecx,inpu
+mov edx,20
+int 80h
+
+;exiting
+
+mov eax,1
+mov ebx,0
+int 80h
+
+section .data
+Msg: db "Enter your name: ",10
+Msg_len: equ $-Msg
+
+inpu: db 20
