@@ -1,0 +1,35 @@
+section .data
+
+abc db 'Division of two numbers is '
+abclen: equ $-abc
+
+section .bss
+divt resb 2
+
+section .text
+global _start
+
+_start:
+
+mov eax,4 
+mov ebx,2
+
+div ebx  
+add eax,'0'  
+mov [divt],eax
+
+
+mov eax,4
+mov ebx,1
+mov ecx,abc
+mov edx,abclen
+int 80h
+
+mov eax,4
+mov ebx,1
+mov ecx,divt
+mov edx,2
+int 80h
+
+mov eax,1
+int 80h
