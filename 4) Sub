@@ -1,0 +1,36 @@
+section .data
+
+abc db 'difference of two numbers is ',10
+abclen: equ $-abc
+
+section .bss
+dif resb 2
+
+section .text
+global _start
+
+_start:
+
+mov eax,5  ;
+
+mov ebx,2  ;
+
+sub eax,ebx  ;eax=eax-ebx 
+add eax,'0'  ;
+mov [dif],eax
+
+
+mov eax,4
+mov ebx,1
+mov ecx,abc
+mov edx,abclen
+int 80h
+
+mov eax,4
+mov ebx,1
+mov ecx,dif
+mov edx,2
+int 80h
+
+mov eax,1
+int 80h
