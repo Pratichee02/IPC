@@ -1,0 +1,28 @@
+section .bss
+num resb 1
+
+section .text
+    global _start
+_start:
+
+mov eax,'5'
+NEXT mov [num],eax
+
+;printing
+
+mov eax,4
+mov ebx,1
+mov ecx,num
+mov edx,1
+int 80h
+
+mov eax,[num]
+dec eax
+
+cmp eax,'1'
+jge NEXT
+
+;exiting
+
+mov eax,1
+int 80h
